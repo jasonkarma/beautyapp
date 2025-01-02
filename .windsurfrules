@@ -1,0 +1,11 @@
+1. use tailwind css
+2. use react-native-screens
+3. use react-native-gesture-handler
+4. use react-native-safe-area-context
+5. use react-native-reanimated
+6. use react-native-vector-icons
+7. use react-native-render-html
+8. use react-native-webview
+9. use react-native-image-picker
+10.use react-native for this project.
+11.make sure that the components is able to be reused and consistent.
