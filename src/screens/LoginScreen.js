@@ -111,6 +111,13 @@ const LoginScreen = ({ navigation }) => {
       fontSize: 16,
       color: 'white',
     },
+    passwordInputIcon: {
+      marginLeft: 12,
+    },
+    passwordInput: {
+      flex: 1,
+      marginLeft: 10,
+    },
   });
 
   return (
@@ -128,9 +135,9 @@ const LoginScreen = ({ navigation }) => {
         />
       </View>
       <View style={styles.inputContainer}>
-        <Icon name="lock" size={20} style={styles.inputIcon} />
+        <Icon name="lock" size={20} style={styles.passwordInputIcon} />
         <TextInput
-          style={styles.input}
+          style={styles.passwordInput}
           placeholder="請輸入密碼"
           secureTextEntry={!showPassword}
           value={password}

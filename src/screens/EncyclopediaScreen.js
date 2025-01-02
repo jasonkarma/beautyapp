@@ -165,8 +165,6 @@ const styles = {
   articleIntro: {
     color: colors.primaryText,
     overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
     maxHeight: 40, 
   },
   navContainer: {

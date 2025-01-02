@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Alert, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, TextInput, Alert, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { colors } from '../styles/colors';
 
 const ProfileEditScreen = ({ navigation, route }) => {
-  const [userInfo, setUserInfo] = useState(route.params.userInfo);
+  const [userInfo, setUserInfo] = useState(route.params?.userInfo || {});
 
   const handleUpdate = async () => {
     try {
@@ -108,7 +108,12 @@ const ProfileEditScreen = ({ navigation, route }) => {
         {renderRadioButton('AB', 2, userInfo.blood_type, () => setUserInfo({ ...userInfo, blood_type: 2 }))}
         {renderRadioButton('O', 3, userInfo.blood_type, () => setUserInfo({ ...userInfo, blood_type: 3 }))}
       </View>
-      <Button title="上傳會員資料" onPress={handleUpdate} color="black" />
+      <TouchableOpacity
+        onPress={handleUpdate}
+        style={{ backgroundColor: '#3498db', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 24, width: '75%', marginBottom: 8, alignSelf: 'center' }}
+      >
+        <Text style={{ color: '#fff', fontWeight: '600', textAlign: 'center' }}>上傳會員資料</Text>
+      </TouchableOpacity>
     </View>
   );
 };

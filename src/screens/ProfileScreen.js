@@ -3,25 +3,50 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
 import { useNavigation } from '@react-navigation/native';
 import { Icon } from 'react-native-elements';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
   const [userInfo, setUserInfo] = React.useState(null);
 
   React.useEffect(() => {
-    // Fetch user info from API or local storage
+    const fetchUserInfo = async () => {
+      try {
+        const token = await AsyncStorage.getItem('userToken');
+        const response = await axios.get('https://wiki.kinglyrobot.com/api/get-user', {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+        setUserInfo(response.data.user);
+      } catch (error) {
+        console.error('Error fetching user info:', error);
+      }
+    };
+
+    fetchUserInfo();
   }, []);
 
   const handleChangePhoto = () => {
     // Handle photo change
   };
 
-  const handleLogout = () => {
-    // Handle user logout
+  const handleLogout = async () => {
+    try {
+      await AsyncStorage.removeItem('userToken');
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Login' }],
+      });
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
   };
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: '#3498db', padding: 24 }}>
+    <ScrollView style={{ flex: 1, backgroundColor: '#DEF4F2', padding: 24 }}>
       {userInfo ? (
         <View style={{ backgroundColor: '#fff', borderRadius: 24, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5, padding: 24, alignItems: 'center', marginBottom: 24 }}>
           <Image
@@ -33,9 +58,16 @@ const ProfileScreen = () => {
           
           <TouchableOpacity
             onPress={handleChangePhoto}
-            style={{ backgroundColor: '#3498db', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 24, marginBottom: 16 }}
+            style={{ backgroundColor: '#3498db', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 24, width: '75%', marginBottom: 8 }}
           >
-            <Text style={{ color: '#fff', fontWeight: '600' }}>Change Photo</Text>
+            <Text style={{ color: '#fff', fontWeight: '600', textAlign: 'center' }}>Change Photo</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => navigation.navigate('ProfileEdit', { userInfo })}
+            style={{ backgroundColor: '#3498db', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 24, width: '75%', marginBottom: 8 }}
+          >
+            <Text style={{ color: '#fff', fontWeight: '600', textAlign: 'center' }}>Edit Profile</Text>
           </TouchableOpacity>
 
           <View style={{ width: '100%' }}>
@@ -71,7 +103,7 @@ const ProfileScreen = () => {
 
           <TouchableOpacity
             onPress={handleLogout}
-            style={{ backgroundColor: '#e74c3c', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 24, width: '100%', justifyContent: 'center' }}
+            style={{ backgroundColor: '#e74c3c', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 24 }}
           >
             <Text style={{ color: '#fff', fontWeight: '600' }}>Logout</Text>
           </TouchableOpacity>
