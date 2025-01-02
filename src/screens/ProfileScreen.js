@@ -60,14 +60,14 @@ const ProfileScreen = () => {
             onPress={handleChangePhoto}
             style={{ backgroundColor: '#3498db', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 24, width: '75%', marginBottom: 8 }}
           >
-            <Text style={{ color: '#fff', fontWeight: '600', textAlign: 'center' }}>Change Photo</Text>
+            <Text style={{ color: '#fff', fontWeight: '600', fontSize: 16, textAlign: 'center' }}>拍照取像</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => navigation.navigate('ProfileEdit', { userInfo })}
             style={{ backgroundColor: '#3498db', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 24, width: '75%', marginBottom: 8 }}
           >
-            <Text style={{ color: '#fff', fontWeight: '600', textAlign: 'center' }}>Edit Profile</Text>
+            <Text style={{ color: '#fff', fontWeight: '600', fontSize: 16, textAlign: 'center' }}>編輯個人資料</Text>
           </TouchableOpacity>
 
           <View style={{ width: '100%' }}>
@@ -105,7 +105,7 @@ const ProfileScreen = () => {
             onPress={handleLogout}
             style={{ backgroundColor: '#e74c3c', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 24 }}
           >
-            <Text style={{ color: '#fff', fontWeight: '600' }}>Logout</Text>
+            <Text style={{ color: '#fff', fontWeight: '600', fontSize: 16, textAlign: 'center' }}>登出</Text>
           </TouchableOpacity>
         </View>
       ) : (

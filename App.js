@@ -9,6 +9,7 @@ import EncyclopediaScreen from './src/screens/EncyclopediaScreen';
 import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import ProfileEditScreen from './src/screens/ProfileEditScreen';
+import FavoritesScreen from './src/screens/FavoritesScreen';
 import { LogBox } from 'react-native';
 
 LogBox.ignoreLogs([
@@ -59,6 +60,11 @@ const App = () => {
           name="ProfileEdit"
           component={ProfileEditScreen}
           options={{ title: 'Edit Profile' }}
+        />
+        <Stack.Screen
+          name="Favorites"
+          component={FavoritesScreen}
+          options={{ title: 'Favorites' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

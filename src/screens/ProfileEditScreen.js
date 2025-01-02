@@ -46,74 +46,76 @@ const ProfileEditScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Real Name</Text>
-      <TextInput
-        style={[styles.input, styles.disabledInput]}
-        placeholder="Real Name"
-        value={userInfo.realname}
-        editable={false}
-      />
-      <Text style={styles.label}>Phone</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Phone"
-        value={userInfo.phone}
-        onChangeText={(text) => setUserInfo({ ...userInfo, phone: text })}
-      />
-      <Text style={styles.label}>Birth</Text>
-      <TextInput
-        style={[styles.input, styles.disabledInput]}
-        placeholder="Birth"
-        value={userInfo.birth}
-        editable={false}
-      />
-      <Text style={styles.label}>Username</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-        value={userInfo.username}
-        onChangeText={(text) => setUserInfo({ ...userInfo, username: text })}
-      />
-      <Text style={styles.label}>Weight</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Weight"
-        value={userInfo.weight}
-        onChangeText={(text) => setUserInfo({ ...userInfo, weight: text })}
-      />
-      <Text style={styles.label}>Height</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Height"
-        value={userInfo.height}
-        onChangeText={(text) => setUserInfo({ ...userInfo, height: text })}
-      />
-      <Text style={styles.label}>City</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="City"
-        value={userInfo.addr}
-        onChangeText={(text) => setUserInfo({ ...userInfo, addr: text })}
-      />
-      <Text style={styles.label}>Sex</Text>
-      <View style={styles.radioGroup}>
-        {renderRadioButton('Female', 0, userInfo.sex, () => setUserInfo({ ...userInfo, sex: 0 }))}
-        {renderRadioButton('Male', 1, userInfo.sex, () => setUserInfo({ ...userInfo, sex: 1 }))}
-        {renderRadioButton('Unspecified', 2, userInfo.sex, () => setUserInfo({ ...userInfo, sex: 2 }))}
+      <View style={{ backgroundColor: '#fff', borderRadius: 24, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5, padding: 24, alignItems: 'center', marginBottom: 24 }}>
+        <Text style={styles.label}>Real Name</Text>
+        <TextInput
+          style={[styles.input, styles.disabledInput]}
+          placeholder="Real Name"
+          value={userInfo.realname}
+          editable={false}
+        />
+        <Text style={styles.label}>Phone</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Phone"
+          value={userInfo.phone}
+          onChangeText={(text) => setUserInfo({ ...userInfo, phone: text })}
+        />
+        <Text style={styles.label}>Birth</Text>
+        <TextInput
+          style={[styles.input, styles.disabledInput]}
+          placeholder="Birth"
+          value={userInfo.birth}
+          editable={false}
+        />
+        <Text style={styles.label}>Username</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          value={userInfo.username}
+          onChangeText={(text) => setUserInfo({ ...userInfo, username: text })}
+        />
+        <Text style={styles.label}>Weight</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Weight"
+          value={userInfo.weight}
+          onChangeText={(text) => setUserInfo({ ...userInfo, weight: text })}
+        />
+        <Text style={styles.label}>Height</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Height"
+          value={userInfo.height}
+          onChangeText={(text) => setUserInfo({ ...userInfo, height: text })}
+        />
+        <Text style={styles.label}>City</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="City"
+          value={userInfo.addr}
+          onChangeText={(text) => setUserInfo({ ...userInfo, addr: text })}
+        />
+        <Text style={styles.label}>Sex</Text>
+        <View style={styles.radioGroup}>
+          {renderRadioButton('Female', 0, userInfo.sex, () => setUserInfo({ ...userInfo, sex: 0 }))}
+          {renderRadioButton('Male', 1, userInfo.sex, () => setUserInfo({ ...userInfo, sex: 1 }))}
+          {renderRadioButton('Unspecified', 2, userInfo.sex, () => setUserInfo({ ...userInfo, sex: 2 }))}
+        </View>
+        <Text style={styles.label}>Blood Type</Text>
+        <View style={styles.radioGroup}>
+          {renderRadioButton('A', 0, userInfo.blood_type, () => setUserInfo({ ...userInfo, blood_type: 0 }))}
+          {renderRadioButton('B', 1, userInfo.blood_type, () => setUserInfo({ ...userInfo, blood_type: 1 }))}
+          {renderRadioButton('AB', 2, userInfo.blood_type, () => setUserInfo({ ...userInfo, blood_type: 2 }))}
+          {renderRadioButton('O', 3, userInfo.blood_type, () => setUserInfo({ ...userInfo, blood_type: 3 }))}
+        </View>
+        <TouchableOpacity
+          onPress={handleUpdate}
+          style={{ backgroundColor: '#3498db', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 24, width: '75%', marginBottom: 8, alignSelf: 'center' }}
+        >
+          <Text style={{ color: '#fff', fontWeight: '600', textAlign: 'center' }}>上傳會員資料</Text>
+        </TouchableOpacity>
       </View>
-      <Text style={styles.label}>Blood Type</Text>
-      <View style={styles.radioGroup}>
-        {renderRadioButton('A', 0, userInfo.blood_type, () => setUserInfo({ ...userInfo, blood_type: 0 }))}
-        {renderRadioButton('B', 1, userInfo.blood_type, () => setUserInfo({ ...userInfo, blood_type: 1 }))}
-        {renderRadioButton('AB', 2, userInfo.blood_type, () => setUserInfo({ ...userInfo, blood_type: 2 }))}
-        {renderRadioButton('O', 3, userInfo.blood_type, () => setUserInfo({ ...userInfo, blood_type: 3 }))}
-      </View>
-      <TouchableOpacity
-        onPress={handleUpdate}
-        style={{ backgroundColor: '#3498db', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 24, width: '75%', marginBottom: 8, alignSelf: 'center' }}
-      >
-        <Text style={{ color: '#fff', fontWeight: '600', textAlign: 'center' }}>上傳會員資料</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -124,9 +126,9 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: colors.primaryBg,
   },
-  input: { borderBottomWidth: 1, marginBottom: 10 },
+  input: { marginBottom: 10 },
   label: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 5,
     color: colors.primary,
@@ -135,10 +137,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginBottom: 15,
+    marginHorizontal: 10,
   },
   radioButton: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginHorizontal: 15,
   },
   circle: {
     width: 20,
