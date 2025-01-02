@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity, Dimensions, Alert } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import PropTypes from 'prop-types';
@@ -66,6 +66,27 @@ const EncyclopediaScreen = ({ navigation }) => {
     }
   };
 
+  const handleLikePress = async (id) => {
+    try {
+      const token = await AsyncStorage.getItem('userToken');
+      const response = await axios.post('https://wiki.kinglyrobot.com/api/clientLike', {
+        bp_subsection_id: id,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        Alert.alert('Success', 'Added to favorites!');
+      }
+    } catch (error) {
+      console.error('Error adding to favorites:', error);
+      Alert.alert('Error', 'Failed to add to favorites.');
+    }
+  };
+
   const contentWidth = Dimensions.get('window').width;
 
   return (
@@ -77,7 +98,9 @@ const EncyclopediaScreen = ({ navigation }) => {
               <Text style={styles.articleTitle}>{selectedArticle.info.bp_subsection_title}</Text>
               <View style={styles.articleIcons}>
                 <TouchableOpacity style={styles.iconButton}><Text>+</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.iconButton}><Text>❤️</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.iconButton} onPress={() => handleLikePress(selectedArticle.info.bp_subsection_id)}>
+                  <Text>❤️</Text>
+                </TouchableOpacity>
               </View>
               <Text style={styles.articleInfo}>Visits: {selectedArticle.info.visit} | Likes: {selectedArticle.info.likecount} | Published: {selectedArticle.info.bp_subsection_first_enabled_at}</Text>
               <Text style={styles.articleIntro}>{selectedArticle.info.bp_subsection_intro}</Text>
@@ -118,7 +141,7 @@ const EncyclopediaScreen = ({ navigation }) => {
         <TouchableOpacity style={styles.navButton} onPress={() => {}}>
           <Text style={styles.navButtonText}>🔍 Search</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navButton} onPress={() => {}}>
+        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Favorites')}>
           <Text style={styles.navButtonText}>❤️ Favorites</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Profile')}>
