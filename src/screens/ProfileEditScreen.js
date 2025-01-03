@@ -79,14 +79,14 @@ const ProfileEditScreen = ({ navigation, route }) => {
         <TextInput
           style={styles.input}
           placeholder="Weight"
-          value={userInfo.weight}
+          value={String(userInfo.weight)}
           onChangeText={(text) => setUserInfo({ ...userInfo, weight: text })}
         />
         <Text style={styles.label}>Height</Text>
         <TextInput
           style={styles.input}
           placeholder="Height"
-          value={userInfo.height}
+          value={String(userInfo.height)}
           onChangeText={(text) => setUserInfo({ ...userInfo, height: text })}
         />
         <Text style={styles.label}>City</Text>

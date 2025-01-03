@@ -14,7 +14,7 @@ const WelcomeScreen = ({ navigation }) => {
       }
     };
     checkLoginStatus();
-  }, []);
+  }, [navigation]);
 
   const handleGetStarted = async () => {
     const token = await AsyncStorage.getItem('userToken');

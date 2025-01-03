@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Image, Alert } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { colors } from '../styles/colors';
@@ -102,7 +102,6 @@ const FavoritesScreen = ({ navigation }) => {
           </View>
         ) : (
           favorites.map((article, index) => {
-            console.log('Article:', article);
             return (
               <TouchableOpacity key={index} style={styles.articleContainer} onPress={() => handleArticlePress(article.bp_subsection_id)}>
                 <Image
