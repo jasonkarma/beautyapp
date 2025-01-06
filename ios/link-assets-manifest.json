@@ -34,18 +34,6 @@
       "sha1": "c1b9fae262f42868c075ac865a8ab34920e20a2c"
     },
     {
-      "path": "node_modules/react-native-vector-icons/Fonts/FontAwesome6_Brands.ttf",
-      "sha1": "7ce89c71d5a51ac65b159c71422783dd86529c66"
-    },
-    {
-      "path": "node_modules/react-native-vector-icons/Fonts/FontAwesome6_Regular.ttf",
-      "sha1": "775e2ecfc18d22b177274453d4c014ca6be63208"
-    },
-    {
-      "path": "node_modules/react-native-vector-icons/Fonts/FontAwesome6_Solid.ttf",
-      "sha1": "2b8e11389d98122399667cf64941eb58497dc128"
-    },
-    {
       "path": "node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
       "sha1": "c090a3ec96a3f1bb9b615c2f3f204ce0dcdcdbc3"
     },

@@ -34,7 +34,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>We need your permission to use the camera</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need your permission to access the photo library</string>
 	<key>UIAppFonts</key>
